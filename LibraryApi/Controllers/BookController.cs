@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using LibraryApi.Models;
 using LibraryApi.Service;
-using LibraryApi.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,7 +11,7 @@ namespace LibraryApi.Controllers
     {
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Book> Get()
+        public string Get()
         {
             BookService bookService = new BookService();
             return bookService.GetBookList();
@@ -24,7 +19,7 @@ namespace LibraryApi.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Book Get(int id)
+        public string Get(int id)
         {
             BookService bookService = new BookService();
             return  bookService.GetBook(id);
@@ -34,7 +29,7 @@ namespace LibraryApi.Controllers
 
         // POST api/values
         [HttpPost]
-        public IEnumerable<Book> Post([FromBody]Book book)
+        public string Post([FromBody]Book book)
         {
             BookService bookService = new BookService();
             return bookService.AddBook(book);
@@ -42,7 +37,7 @@ namespace LibraryApi.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public Book Put(int id, [FromBody]Book book)
+        public string Put(int id, [FromBody]Book book)
         {
             BookService bookService = new BookService();
             return bookService.EditBook(id, book);
@@ -50,7 +45,7 @@ namespace LibraryApi.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public List<Book> Delete(int id)
+        public string Delete(int id)
         {
             BookService bookService = new BookService();
             return bookService.DeleteBook(id);

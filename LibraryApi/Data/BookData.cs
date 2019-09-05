@@ -1,9 +1,5 @@
 ﻿using LibraryApi.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace LibraryApi.Data
 {
@@ -14,9 +10,9 @@ namespace LibraryApi.Data
         public BookData()
         {
             BookList = new List<Book>();
-            BookList.Add(new Book { Id = 1111, Name = "Design Patterns", AuthorName = "Don Norman" });
-            BookList.Add(new Book { Id = 1112, Name = "Greatest Cover Up", AuthorName = "Anuj Dhar" });
-            BookList.Add(new Book { Id = 1113, Name = "Wings of Fire", AuthorName = "Abdul Kalam" });
+            BookList.Add(new Book { Id = 1111, Name = "Design Patterns", AuthorName = "Don Norman", Category = "Design", Price = 590 });
+            BookList.Add(new Book { Id = 1112, Name = "Greatest Cover Up", AuthorName = "Anuj Dhar", Category = "Non-Fiction", Price = 1235.98 });
+            BookList.Add(new Book { Id = 1113, Name = "Wings of Fire", AuthorName = "Abdul Kalam", Category = "Non-Fiction", Price = 1090.78 });
         }
 
         public List<Book> Add(Book book)
@@ -27,7 +23,9 @@ namespace LibraryApi.Data
 
         public List<Book> GetBookList()
         {
-            return BookList;
+            if (BookList.Count != 0)
+                return BookList;
+            return null;
         }
 
         public Book Get(int id)

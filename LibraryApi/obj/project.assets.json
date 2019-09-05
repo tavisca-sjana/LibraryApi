@@ -12075,11 +12075,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "c:\\users\\sjana\\source\\repos\\LibraryApi\\LibraryApi\\LibraryApi.csproj",
+      "projectUniqueName": "C:\\Users\\sjana\\source\\repos\\LibraryApi\\LibraryApi\\LibraryApi.csproj",
       "projectName": "LibraryApi",
-      "projectPath": "c:\\users\\sjana\\source\\repos\\LibraryApi\\LibraryApi\\LibraryApi.csproj",
+      "projectPath": "C:\\Users\\sjana\\source\\repos\\LibraryApi\\LibraryApi\\LibraryApi.csproj",
       "packagesPath": "C:\\Users\\sjana\\.nuget\\packages\\",
-      "outputPath": "c:\\users\\sjana\\source\\repos\\LibraryApi\\LibraryApi\\obj\\",
+      "outputPath": "C:\\Users\\sjana\\source\\repos\\LibraryApi\\LibraryApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
