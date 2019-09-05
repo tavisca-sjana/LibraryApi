@@ -31,95 +31,79 @@ namespace LibraryApi.Service
 
        
 
-        public string GetBookList()
+        public List<Book> GetBookList()
         {
             List<Book> bookList = BookData.GetBookList();
-            string serializedBookList = "";
+
             if(bookList != null)
             {
-                serializedBookList = JsonConvert.SerializeObject(bookList);
-                ResponseObject = Response.GetSuccessObject(serializedBookList);              
-               
+                return bookList;
+                
             }
 
             else
             {
-               ResponseObject = Response.GetErrorObject(404,"No Records");
+                return null;
             }
                 
-            return JsonConvert.SerializeObject(ResponseObject);
         }
 
-        public string GetBook(int id)
+        public Book GetBook(int id)
         {
            
             if (ValidateId(id))
             {
-                Book book = BookData.Get(id);
-                string serializedBook = JsonConvert.SerializeObject(book);
-                ResponseObject = Response.GetSuccessObject(serializedBook);
+                return BookData.Get(id);  
             }
                 
             else
             {
-                ResponseObject = Response.GetErrorObject(404, "No Records");
+                return null;
             }
-
-            return JsonConvert.SerializeObject(ResponseObject);
 
         }
 
-        public string AddBook(Book book)
+        public List<Book> AddBook(Book book)
         {
             if(book.Id < 0 )
             {
-                ResponseObject = Response.GetErrorObject(400,"Negative Id");
+                return null;
             }
-            else if(!BookValidation.StringContainsOnlyAplhabets(book.AuthorName) && !BookValidation.StringContainsOnlyAplhabets(book.Name) && !BookValidation.StringContainsOnlyAplhabets(book.Category))
+            else if (BookValidation.StringContainsOnlyAlphabets(book.AuthorName))
             {
-                ResponseObject = Response.GetErrorObject(400, "Only Alphabets Allowed");
+                return null;
+            }
+            else if (!BookValidation.StringContainsOnlyAlphabets(book.Category))
+            {
+                return null;
+            }
+            else if (!BookValidation.StringContainsOnlyAlphabets(book.Name))
+            {
+                return null;
             }
             else
             {
 
                 List<Book> bookList = BookData.Add(book);
-                string serializedBookList = "";
-                if (bookList != null)
-                {
-                    serializedBookList = JsonConvert.SerializeObject(bookList);
-                    ResponseObject = Response.GetSuccessObject(serializedBookList);
-                }
-
-                else
-                {
-                    ResponseObject = Response.GetErrorObject(400, "Bad Request");
-                }
-
+                return bookList;
             }
            
-            return JsonConvert.SerializeObject(ResponseObject);
         }
 
-        public string EditBook(int id,Book bookToEdit)
+        public Book EditBook(int id,Book bookToEdit)
         {
             if (ValidateId(id))
             {
                 Book book = BookData.Edit(id, bookToEdit);
-                string serializedBook = JsonConvert.SerializeObject(book);
-                ResponseObject = Response.GetSuccessObject(serializedBook);
+                return book;
             }
 
-            else if(BookValidation.StringContainsOnlyAplhabets(bookToEdit.AuthorName) && BookValidation.StringContainsOnlyAplhabets(bookToEdit.Name) && BookValidation.StringContainsOnlyAplhabets(bookToEdit.Category))
+            else if(BookValidation.StringContainsOnlyAlphabets(bookToEdit.AuthorName) && BookValidation.StringContainsOnlyAplhabets(bookToEdit.Name) && BookValidation.StringContainsOnlyAplhabets(bookToEdit.Category))
             {
-                ResponseObject = Response.GetErrorObject(400, "Only Alphabets Allowed");
+                return null;
             }
 
-            else
-            {
-                ResponseObject = Response.GetErrorObject(404, "Record Not Found");
-            }
-
-            return JsonConvert.SerializeObject(ResponseObject);
+            return null;
         }
 
         public string DeleteBook(int id)
