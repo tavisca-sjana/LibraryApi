@@ -4,99 +4,57 @@ using LibraryApi.Service;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LibraryApi.Controllers
 {
     [Route("api/[controller]")]
     public class BookController : Controller
     {
-        dynamic ResponseObject;
-        // GET: api/values
+        
+        // GET: api/book
         [HttpGet]
-        public string Get()
+        public ActionResult Get()
         {
             BookService bookService = new BookService();
-            List<Book> bookList = bookService.GetBookList();
-            if (bookList != null)
-            {
-
-                string serializedBookList = JsonConvert.SerializeObject(bookList);
-                ResponseObject = LibraryApi.Service.Response.GetSuccessObject(serializedBookList);
-
-            }
-
-            else
-            {
-               
-                ResponseObject = LibraryApi.Service.Response.GetErrorObject(404, "No Records");
-            }
-            return JsonConvert.SerializeObject(ResponseObject);
+            Response response = bookService.GetBookList();
+            return StatusCode(response.StatusCode, response);
+            
         }
 
-        // GET api/values/5
+        // GET api/book/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult Get(int id)
         {
             BookService bookService = new BookService();
-            Book book = bookService.GetBook(id);
-            if(book != null)
-            {
-                string serializedBook = JsonConvert.SerializeObject(book);
-                ResponseObject = LibraryApi.Service.Response.GetSuccessObject(serializedBook);
-            }
-
-            else
-            {
-                ResponseObject = LibraryApi.Service.Response.GetErrorObject(404, "No Records");
-            }
-            return JsonConvert.SerializeObject(ResponseObject);
-
+            Response response = bookService.GetBook(id);
+            return StatusCode(response.StatusCode, response);
         }
 
-        // POST api/values
+        // POST api/book
         [HttpPost]
-        public string Post([FromBody]Book book)
+        public ActionResult Post([FromBody]Book book)
         {
             BookService bookService = new BookService();
-            List<Book> bookList =  bookService.AddBook(book);
-            if (bookList != null)
-            {
-                string serializedBookList = JsonConvert.SerializeObject(bookList);
-                ResponseObject = LibraryApi.Service.Response.GetSuccessObject(serializedBookList);
-            }
-            else
-            {
-                ResponseObject = LibraryApi.Service.Response.GetErrorObject(400, "Bad Request");
-            }
-            return JsonConvert.SerializeObject(ResponseObject);
+            Response response = bookService.AddBook(book);
+            return StatusCode(response.StatusCode, response);
         }
 
-        // PUT api/values/5
+        // PUT api/book/5
         [HttpPut("{id}")]
-        public string Put(int id, [FromBody]Book book)
+        public ActionResult Put(int id, [FromBody]Book book)
         {
             BookService bookService = new BookService();
-            Book editedBook =  bookService.EditBook(id, book);
-            if(book != null)
-            {
-                string serializedBook = JsonConvert.SerializeObject(editedBook);
-                ResponseObject = LibraryApi.Service.Response.GetSuccessObject(serializedBook);
-            }
-            else
-            {
-                ResponseObject = LibraryApi.Service.Response.GetErrorObject(404, "Record Not Found");
-            }
-            return JsonConvert.SerializeObject(ResponseObject);
-
+            Response response = bookService.EditBook(id, book);
+            return StatusCode(response.StatusCode, response);
         }
 
-        // DELETE api/values/5
+        // DELETE api/book/5
         [HttpDelete("{id}")]
-        public string Delete(int id)
+        public ActionResult Delete(int id)
         {
             BookService bookService = new BookService();
-            return bookService.DeleteBook(id);
+            Response response = bookService.DeleteBook(id);
+            return StatusCode(response.StatusCode, response);
         }
     }
 }

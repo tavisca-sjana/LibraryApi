@@ -3,7 +3,6 @@ c:\users\sjana\source\repos\LibraryApi\LibraryApi\bin\Debug\netcoreapp2.2\Librar
 c:\users\sjana\source\repos\LibraryApi\LibraryApi\bin\Debug\netcoreapp2.2\LibraryApi.runtimeconfig.dev.json
 c:\users\sjana\source\repos\LibraryApi\LibraryApi\bin\Debug\netcoreapp2.2\LibraryApi.dll
 c:\users\sjana\source\repos\LibraryApi\LibraryApi\bin\Debug\netcoreapp2.2\LibraryApi.pdb
-c:\users\sjana\source\repos\LibraryApi\LibraryApi\obj\Debug\netcoreapp2.2\LibraryApi.csprojResolveAssemblyReference.cache
 c:\users\sjana\source\repos\LibraryApi\LibraryApi\obj\Debug\netcoreapp2.2\LibraryApi.csproj.CoreCompileInputs.cache
 c:\users\sjana\source\repos\LibraryApi\LibraryApi\obj\Debug\netcoreapp2.2\LibraryApi.RazorAssemblyInfo.cache
 c:\users\sjana\source\repos\LibraryApi\LibraryApi\obj\Debug\netcoreapp2.2\LibraryApi.RazorAssemblyInfo.cs
@@ -12,3 +11,4 @@ c:\users\sjana\source\repos\LibraryApi\LibraryApi\obj\Debug\netcoreapp2.2\Librar
 c:\users\sjana\source\repos\LibraryApi\LibraryApi\obj\Debug\netcoreapp2.2\LibraryApi.RazorTargetAssemblyInfo.cache
 c:\users\sjana\source\repos\LibraryApi\LibraryApi\obj\Debug\netcoreapp2.2\LibraryApi.dll
 c:\users\sjana\source\repos\LibraryApi\LibraryApi\obj\Debug\netcoreapp2.2\LibraryApi.pdb
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\obj\Debug\netcoreapp2.2\LibraryApi.csprojAssemblyReference.cache

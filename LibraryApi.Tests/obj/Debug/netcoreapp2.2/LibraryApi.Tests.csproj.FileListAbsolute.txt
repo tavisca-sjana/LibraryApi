@@ -8,9 +8,10 @@ C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\bin\Debug\netcoreapp2.2\
 C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\bin\Debug\netcoreapp2.2\LibraryApi.Tests.pdb
 C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\bin\Debug\netcoreapp2.2\LibraryApi.dll
 C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\bin\Debug\netcoreapp2.2\LibraryApi.pdb
-C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\obj\Debug\netcoreapp2.2\LibraryApi.Tests.csprojResolveAssemblyReference.cache
 C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\obj\Debug\netcoreapp2.2\LibraryApi.Tests.csproj.CoreCompileInputs.cache
 C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\obj\Debug\netcoreapp2.2\LibraryApi.Tests.AssemblyInfoInputs.cache
 C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\obj\Debug\netcoreapp2.2\LibraryApi.Tests.AssemblyInfo.cs
 C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\obj\Debug\netcoreapp2.2\LibraryApi.Tests.dll
 C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\obj\Debug\netcoreapp2.2\LibraryApi.Tests.pdb
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\obj\Debug\netcoreapp2.2\LibraryApi.Tests.csprojAssemblyReference.cache
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi.Tests\obj\Debug\netcoreapp2.2\LibraryApi.Tests.csproj.CopyComplete
