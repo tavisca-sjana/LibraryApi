@@ -16,7 +16,7 @@ namespace LibraryApi.Controllers
         public ActionResult Get()
         {
             BookService bookService = new BookService();
-            Response response = bookService.GetBookList();
+            Response response = bookService.Get();
             return StatusCode(response.StatusCode, response);
             
         }
@@ -26,7 +26,7 @@ namespace LibraryApi.Controllers
         public ActionResult Get(int id)
         {
             BookService bookService = new BookService();
-            Response response = bookService.GetBook(id);
+            Response response = bookService.GetById(id);
             return StatusCode(response.StatusCode, response);
         }
 
@@ -35,7 +35,7 @@ namespace LibraryApi.Controllers
         public ActionResult Post([FromBody]Book book)
         {
             BookService bookService = new BookService();
-            Response response = bookService.AddBook(book);
+            Response response = bookService.Add(book);
             return StatusCode(response.StatusCode, response);
         }
 
@@ -44,7 +44,7 @@ namespace LibraryApi.Controllers
         public ActionResult Put(int id, [FromBody]Book book)
         {
             BookService bookService = new BookService();
-            Response response = bookService.EditBook(id, book);
+            Response response = bookService.EditById(id, book);
             return StatusCode(response.StatusCode, response);
         }
 
@@ -53,7 +53,7 @@ namespace LibraryApi.Controllers
         public ActionResult Delete(int id)
         {
             BookService bookService = new BookService();
-            Response response = bookService.DeleteBook(id);
+            Response response = bookService.DeleteById(id);
             return StatusCode(response.StatusCode, response);
         }
     }

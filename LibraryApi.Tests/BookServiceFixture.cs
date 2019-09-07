@@ -26,7 +26,7 @@ namespace LibraryApi.Tests
             BookService bookService = new BookService();
             int expectedStatusCode = 200;
             
-            var response = bookService.GetBookList();
+            var response = bookService.Get();
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
 
@@ -39,7 +39,7 @@ namespace LibraryApi.Tests
             int id = 1111;
             int expectedStatusCode = 200;
 
-            var response = bookService.GetBook(id);
+            var response = bookService.GetById(id);
 
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
@@ -53,7 +53,7 @@ namespace LibraryApi.Tests
             int id = 11341;
             int expectedStatusCode = 404;
 
-            var response = bookService.GetBook(id);
+            var response = bookService.GetById(id);
             output.WriteLine(response.StatusCode.ToString());
             Assert.Equal(expectedStatusCode,response.StatusCode);
 
@@ -66,7 +66,7 @@ namespace LibraryApi.Tests
             Book newBook = new Book { Id = 1114, Name = "DesignPatterns", AuthorName = "DonNorman", Category = "Design", Price = 690 ,  };
             int expectedStatusCode = 200;
 
-            var response = bookService.AddBook(newBook);
+            var response = bookService.Add(newBook);
 
             Assert.Equal(expectedStatusCode,response.StatusCode);
 
@@ -80,7 +80,7 @@ namespace LibraryApi.Tests
             int expectedStatusCode = 400;
             string expectedMessage = "ID field is negative";
 
-            var response = bookService.AddBook(newBook);
+            var response = bookService.Add(newBook);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
             Assert.Equal(expectedMessage, response.ErrorList[0]);
@@ -95,7 +95,7 @@ namespace LibraryApi.Tests
             int expectedStatusCode = 400;
             string expectedMessage = "Author Name field should contain only alphabets";
 
-            var response = bookService.AddBook(newBook);
+            var response = bookService.Add(newBook);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
             Assert.Equal(expectedMessage, response.ErrorList[0]);
@@ -110,7 +110,7 @@ namespace LibraryApi.Tests
             int expectedStatusCode = 400;
             string expectedMessage = "Book Name field should contain only alphabets";
 
-            var response = bookService.AddBook(newBook);
+            var response = bookService.Add(newBook);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
             Assert.Equal(expectedMessage, response.ErrorList[0]);
@@ -125,7 +125,7 @@ namespace LibraryApi.Tests
             int expectedStatusCode = 400;
             string expectedMessage = "Category field should contain only alphabets";
 
-            var response = bookService.AddBook(newBook);
+            var response = bookService.Add(newBook);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
             Assert.Equal(expectedMessage, response.ErrorList[0]);
@@ -144,7 +144,7 @@ namespace LibraryApi.Tests
                 "Category field should contain only alphabets",
                 "Book Name field should contain only alphabets"
             };
-            var response = bookService.AddBook(newBook);
+            var response = bookService.Add(newBook);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
             for(int i= 0;i<response.ErrorList.Count;i++)
@@ -161,7 +161,7 @@ namespace LibraryApi.Tests
             int id = 1111;
             int expectedStatusCode = 200;
 
-            var response = bookService.DeleteBook(id);
+            var response = bookService.DeleteById(id);
            
             Assert.Equal(expectedStatusCode, response.StatusCode);
 
@@ -174,7 +174,7 @@ namespace LibraryApi.Tests
             int id = 1119881;
             int expectedStatusCode = 400;
 
-            var response = bookService.DeleteBook(id);
+            var response = bookService.DeleteById(id);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
 
@@ -190,7 +190,7 @@ namespace LibraryApi.Tests
             Book newBook = new Book { Id = 1111, Name = "DesignPatterns", AuthorName = "Don K Norman", Category = "Design", Price = 690, };
             int expectedStatusCode = 200;
 
-            var response = bookService.EditBook(id,newBook);
+            var response = bookService.EditById(id,newBook);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
 
@@ -205,7 +205,7 @@ namespace LibraryApi.Tests
             int expectedStatusCode = 400;
             string expectedMessage = "ID field is negative";
 
-            var response = bookService.EditBook(id,newBook);
+            var response = bookService.EditById(id,newBook);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
             Assert.Equal(expectedMessage, response.ErrorList[0]);
@@ -220,7 +220,7 @@ namespace LibraryApi.Tests
             Book newBook = new Book { Id = 1111, Name = "DesignPatterns", AuthorName = "Don K Norman", Category = "Design", Price = 690, };
             int expectedStatusCode = 400;
 
-            var response = bookService.EditBook(id, newBook);
+            var response = bookService.EditById(id, newBook);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
 
@@ -235,7 +235,7 @@ namespace LibraryApi.Tests
             int expectedStatusCode = 400;
             string expectedMessage = "Book Name field should contain only alphabets";
 
-            var response = bookService.EditBook(id, newBook);
+            var response = bookService.EditById(id, newBook);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
             Assert.Equal(expectedMessage, response.ErrorList[0]);
@@ -251,7 +251,7 @@ namespace LibraryApi.Tests
             int expectedStatusCode = 400;
             string expectedMessage = "Author Name field should contain only alphabets";
 
-            var response = bookService.EditBook(id, newBook);
+            var response = bookService.EditById(id, newBook);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
             Assert.Equal(expectedMessage, response.ErrorList[0]);
@@ -267,7 +267,7 @@ namespace LibraryApi.Tests
             int expectedStatusCode = 400;
             string expectedMessage = "Category field should contain only alphabets";
 
-            var response = bookService.EditBook(id, newBook);
+            var response = bookService.EditById(id, newBook);
 
             Assert.Equal(expectedStatusCode, response.StatusCode);
             Assert.Equal(expectedMessage, response.ErrorList[0]);
@@ -289,7 +289,7 @@ namespace LibraryApi.Tests
             };
 
             //Act
-            var response = bookService.EditBook(id,newBook);
+            var response = bookService.EditById(id,newBook);
 
             //Assert
             Assert.Equal(expectedStatusCode, response.StatusCode);

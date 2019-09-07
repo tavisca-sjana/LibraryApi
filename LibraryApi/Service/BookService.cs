@@ -10,176 +10,175 @@ namespace LibraryApi.Service
     public class BookService
     {
 
-        BookData BookData;
-        Response Response;
+        private BookData _bookData;
+        private Response _reponse;
 
         public BookService()
         {
-            BookData = new BookData();
-            Response = new Response();
+            _bookData = new BookData();
+            _reponse = new Response();
         }
        
        
 
-        public Response GetBookList()
+        public Response Get()
         {
-            List<Book> bookList = BookData.GetBookList();
-
+            List<Book> bookList = _bookData.GetBookList();
+            _reponse.Model = bookList;
+            _reponse.StatusCode = 200;
             if (bookList != null)
             {
-                Response.Model = bookList;
-                Response.StatusCode = 200;
-                Response.Message = "Success";
+              _reponse.Message = "Success";
             }
                 
             else
             {
-                Response.Model = bookList;
-                Response.StatusCode = 404;
-                Response.Message = "No Records Found";
+                _reponse.Message = "No Records Found";
             }
 
-            return Response;
+            return _reponse;
         }
 
-        public Response GetBook(int id)
+        public Response GetById(int id)
         {
-            Book book = BookData.Get(id);  
+            Book book = _bookData.Get(id);  
             if(book != null)
             {
-                Response.Model = book;
-                Response.StatusCode = 200;
-                Response.Message = "Success";
+                _reponse.Model = book;
+                _reponse.StatusCode = 200;
+                _reponse.Message = "Success";
 
             }
             else
             {
-                Response.Model = book;
-                Response.StatusCode = 404;
-                Response.Message = "Record Not Found";
+                _reponse.Model = book;
+                _reponse.StatusCode = 404;
+                _reponse.Message = "Record Not Found";
 
             }
            
-            return Response;
+            return _reponse;
         }
 
-        public Response AddBook(Book book)
+        public Response Add(Book book)
         {
             bool errorFlag = false;
             if (BookValidation.NegativeId(book.Id))
             {
                 errorFlag = true;
-                Response.StatusCode = 400;
-                Response.Message = "Bad Request";
-                Response.ErrorList.Add("ID field is negative");
+                _reponse.StatusCode = 400;
+                _reponse.Message = "Bad Request";
+                _reponse.ErrorList.Add("ID field is negative");
             }
             if (!BookValidation.StringContainsOnlyAlphabets(book.AuthorName))
             {
                 errorFlag = true;
-                Response.StatusCode = 400;
-                Response.Message = "Bad Request";
-                Response.ErrorList.Add("Author Name field should contain only alphabets");
+                _reponse.StatusCode = 400;
+                _reponse.Message = "Bad Request";
+                _reponse.ErrorList.Add("Author Name field should contain only alphabets");
             }
             if (!BookValidation.StringContainsOnlyAlphabets(book.Category))
             {
                 errorFlag = true;
-                Response.StatusCode = 400;
-                Response.Message = "Bad Request";
-                Response.ErrorList.Add("Category field should contain only alphabets");
+                _reponse.StatusCode = 400;
+                _reponse.Message = "Bad Request";
+                _reponse.ErrorList.Add("Category field should contain only alphabets");
             }
             if (!BookValidation.StringContainsOnlyAlphabets(book.Name))
             {
                 errorFlag = true;
-                Response.StatusCode = 400;
-                Response.Message = "Bad Request";
-                Response.ErrorList.Add("Book Name field should contain only alphabets");
+                _reponse.StatusCode = 400;
+                _reponse.Message = "Bad Request";
+                _reponse.ErrorList.Add("Book Name field should contain only alphabets");
             }
             if(!errorFlag)
             {
 
-                List<Book> bookList = BookData.Add(book);
-                Response.Model = bookList;
-                Response.StatusCode = 200;
-                Response.Message = "Success";
+                List<Book> bookList = _bookData.Add(book);
+                _reponse.Model = bookList;
+                _reponse.StatusCode = 200;
+                _reponse.Message = "Success";
             }
-            return Response;
+            return _reponse;
            
         }
 
-        public Response EditBook(int id,Book bookToEdit)
+        public Response EditById(int id,Book bookToEdit)
         {
             bool errorFlag = false;
 
             if (BookValidation.NegativeId(bookToEdit.Id))
             {
                 errorFlag = true;
-                Response.StatusCode = 400;
-                Response.Message = "Bad Request";
-                Response.ErrorList.Add("ID field is negative");
+                _reponse.StatusCode = 400;
+                _reponse.Message = "Bad Request";
+                _reponse.ErrorList.Add("ID field is negative");
             }
             if (!BookValidation.StringContainsOnlyAlphabets(bookToEdit.AuthorName))
             {
                 errorFlag = true;
-                Response.StatusCode = 400;
-                Response.Message = "Bad Request";
-                Response.ErrorList.Add("Author Name field should contain only alphabets");
+                _reponse.StatusCode = 400;
+                _reponse.Message = "Bad Request";
+                _reponse.ErrorList.Add("Author Name field should contain only alphabets");
             }
             if (!BookValidation.StringContainsOnlyAlphabets(bookToEdit.Category))
             {
                 errorFlag = true;
-                Response.StatusCode = 400;
-                Response.Message = "Bad Request";
-                Response.ErrorList.Add("Category field should contain only alphabets");
+                _reponse.StatusCode = 400;
+                _reponse.Message = "Bad Request";
+                _reponse.ErrorList.Add("Category field should contain only alphabets");
             }
             if (!BookValidation.StringContainsOnlyAlphabets(bookToEdit.Name))
             {
                 errorFlag = true;
-                Response.StatusCode = 400;
-                Response.Message = "Bad Request";
-                Response.ErrorList.Add("Book Name field should contain only alphabets");
+                _reponse.StatusCode = 400;
+                _reponse.Message = "Bad Request";
+                _reponse.ErrorList.Add("Book Name field should contain only alphabets");
             }
             if (!errorFlag)
             {
-                Book book = BookData.Edit(id, bookToEdit);
+                Book book = _bookData.Edit(id, bookToEdit);
                 if (book != null)
                 {
-                    Response.Model = book;
-                    Response.StatusCode = 200;
-                    Response.Message = "Success";
+                    _reponse.Model = book;
+                    _reponse.StatusCode = 200;
+                    _reponse.Message = "Success";
                 }
                 else
                 {
-                    Response.Model = book;
-                    Response.StatusCode = 400;
-                    Response.Message = "Bad Request";
+                    _reponse.Model = book;
+                    _reponse.StatusCode = 400;
+                    _reponse.Message = "Bad Request";
                 }
             }
                 
             
 
-            return Response;
+            return _reponse;
         }
 
-        public Response DeleteBook(int id)
+        public Response DeleteById(int id)
         {
-            List<Book> bookList = BookData.Delete(id);
+            List<Book> bookList = _bookData.Delete(id);
             if (bookList != null)
             {
-                Response.Model = bookList;
-                Response.StatusCode = 200;
-                Response.Message = "Success";
+                _reponse.Model = bookList;
+                _reponse.StatusCode = 200;
+                _reponse.Message = "Success";
 
             }
             else
             {
-                Response.Model = bookList;
-                Response.StatusCode = 400;
-                Response.Message = "Record Not Found";
+                _reponse.Model = bookList;
+                _reponse.StatusCode = 400;
+                _reponse.Message = "Record Not Found";
 
             }
 
-            return Response;
+            return _reponse;
 
         }
+
+        
     }
 }
