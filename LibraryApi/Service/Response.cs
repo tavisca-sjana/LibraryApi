@@ -8,14 +8,24 @@ namespace LibraryApi.Service
     public class Response
     {
         public Object Model { get; set; }
-        public string Message { get; set; }
         public int StatusCode { get; set; }
 
-        public List<string> ErrorList;
+        public List<Tuple<string, string>> ErrorList;
 
         public Response()
         {
-            ErrorList = new List<string>();
+            ErrorList = new List<Tuple<string, string>>();
         }
+
+        public Response CreateObject(int statusCode,Object model = null,List<Tuple<string,string>> errorList=null)
+        {
+            Response response = new Response();
+            response.StatusCode = statusCode;
+            response.Model = model;
+            response.ErrorList = errorList;
+
+            return response;
+        }
+
     }
 }
