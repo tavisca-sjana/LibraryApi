@@ -24,7 +24,9 @@ namespace LibraryApi.Data
 
         public List<Book> GetBookList()
         {
-            return BookList;
+            if (BookList.Count > 0)
+                return BookList;
+            return null;
         }
 
         public Book Get(int id)
@@ -34,6 +36,7 @@ namespace LibraryApi.Data
 
        public Book Edit(int id,Book book)
        {
+      
             for(int i=0;i<BookList.Count;i++)
             {
                 if(BookList[i].Id == id)

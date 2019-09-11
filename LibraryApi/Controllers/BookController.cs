@@ -3,7 +3,7 @@ using LibraryApi.Models;
 using LibraryApi.Service;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-
+using Microsoft.Extensions.Logging;
 
 namespace LibraryApi.Controllers
 {
@@ -12,10 +12,12 @@ namespace LibraryApi.Controllers
     {
         private BookService _bookService;
         private Response _response;
+        private readonly ILogger _logger;
 
-        public BookController()
+        public BookController(ILogger<BookController> logger)
         {
             _bookService = new BookService();
+            _logger = logger;
         }
         
         // GET: api/book
@@ -23,6 +25,7 @@ namespace LibraryApi.Controllers
         public ActionResult Get()
         {
             _response = _bookService.Get();
+            _logger.LogInformation($"{nameof(Get)} route hit");
             return StatusCode(_response.StatusCode, _response);
             
         }
@@ -32,6 +35,7 @@ namespace LibraryApi.Controllers
         public ActionResult Get(int id)
         {
             _response = _bookService.GetById(id);
+            _logger.LogInformation($"{nameof(Get)} by id route hit");
             return StatusCode(_response.StatusCode, _response);
         }
 
@@ -40,6 +44,7 @@ namespace LibraryApi.Controllers
         public ActionResult Post([FromBody]Book book)
         {
             _response = _bookService.Add(book);
+            _logger.LogInformation($"{nameof(Post)} route hit");
             return StatusCode(_response.StatusCode, _response);
         }
 
@@ -48,6 +53,7 @@ namespace LibraryApi.Controllers
         public ActionResult Put(int id, [FromBody]Book book)
         {
             _response = _bookService.EditById(id, book);
+            _logger.LogInformation($"{nameof(Put)} route hit");
             return StatusCode(_response.StatusCode, _response);
         }
 
@@ -56,6 +62,7 @@ namespace LibraryApi.Controllers
         public ActionResult Delete(int id)
         {
             _response = _bookService.DeleteById(id);
+            _logger.LogInformation($"{nameof(Delete)} route hit");
             return StatusCode(_response.StatusCode, _response);
         }
     }

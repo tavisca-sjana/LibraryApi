@@ -1,0 +1,14 @@
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\bin\Release\netcoreapp2.2\LibraryApi.deps.json
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\bin\Release\netcoreapp2.2\LibraryApi.runtimeconfig.json
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\bin\Release\netcoreapp2.2\LibraryApi.runtimeconfig.dev.json
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\bin\Release\netcoreapp2.2\LibraryApi.dll
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\bin\Release\netcoreapp2.2\LibraryApi.pdb
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\obj\Release\netcoreapp2.2\LibraryApi.csprojAssemblyReference.cache
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\obj\Release\netcoreapp2.2\LibraryApi.csproj.CoreCompileInputs.cache
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\obj\Release\netcoreapp2.2\LibraryApi.RazorAssemblyInfo.cache
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\obj\Release\netcoreapp2.2\LibraryApi.RazorAssemblyInfo.cs
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\obj\Release\netcoreapp2.2\LibraryApi.AssemblyInfoInputs.cache
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\obj\Release\netcoreapp2.2\LibraryApi.AssemblyInfo.cs
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\obj\Release\netcoreapp2.2\LibraryApi.RazorTargetAssemblyInfo.cache
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\obj\Release\netcoreapp2.2\LibraryApi.dll
+C:\Users\sjana\source\repos\LibraryApi\LibraryApi\obj\Release\netcoreapp2.2\LibraryApi.pdb

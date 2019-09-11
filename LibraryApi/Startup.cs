@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Serilog;
 
 namespace LibraryApi
 {
@@ -31,26 +33,34 @@ namespace LibraryApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //var serilog = new LoggerConfiguration()
+                //               .WriteTo.RollingFile(Path.Combine(env.ContentRootPath, "log-{Date}.txt"))
+                //               .CreateLogger();
+                //loggerFactory.AddSerilog(serilog);
+                var serilog = new LoggerConfiguration()
+                              .ReadFrom.Configuration(Configuration)
+                              .CreateLogger();
+                loggerFactory.AddSerilog(serilog);
             }
             else
             {
+                
+
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
-            app.Use(async (context, next) =>
-            {
-                //Intercept request
-                //Intercpet Response
-                await context.Response.WriteAsync("<h1>Lol</h1>");
-                await next();
 
-            });
+            
+
+
 
             app.UseHttpsRedirection();
             app.UseMvc();
