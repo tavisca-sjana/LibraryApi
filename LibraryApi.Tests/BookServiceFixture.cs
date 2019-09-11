@@ -61,7 +61,7 @@ namespace LibraryApi.Tests
         {
             BookService bookService = new BookService();
             Book newBook = new Book { Id = 1114, Name = "DesignPatterns", AuthorName = "DonNorman", Category = "Design", Price = 690, };
-            int expectedStatusCode = 200;
+            int expectedStatusCode = 201;
 
             var response = bookService.Add(newBook);
 
@@ -183,7 +183,7 @@ namespace LibraryApi.Tests
             BookService bookService = new BookService();
             int id = 1111;
             Book newBook = new Book { Id = 1111, Name = "DesignPatterns", AuthorName = "Don K Norman", Category = "Design", Price = 690, };
-            int expectedStatusCode = 200;
+            int expectedStatusCode = 201;
 
             var response = bookService.EditById(id, newBook);
 
@@ -211,7 +211,7 @@ namespace LibraryApi.Tests
             BookService bookService = new BookService();
             int id = 12311;
             Book newBook = new Book { Id = 1111, Name = "DesignPatterns", AuthorName = "Don K Norman", Category = "Design", Price = 690, };
-            int expectedStatusCode = 200;
+            int expectedStatusCode = 201;
 
             var response = bookService.EditById(id, newBook);
 

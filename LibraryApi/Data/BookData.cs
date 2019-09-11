@@ -1,5 +1,6 @@
 ﻿using LibraryApi.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LibraryApi.Data
 {
@@ -23,19 +24,12 @@ namespace LibraryApi.Data
 
         public List<Book> GetBookList()
         {
-            if (BookList.Count != 0)
-                return BookList;
-            return null;
+            return BookList;
         }
 
         public Book Get(int id)
         {
-            foreach(var book in BookList)
-            {
-                if (book.Id == id)
-                    return book;
-            }
-            return null;
+            return BookList.FirstOrDefault(book => book.Id == id);   
         }
 
        public Book Edit(int id,Book book)

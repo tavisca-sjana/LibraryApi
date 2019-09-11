@@ -42,7 +42,7 @@ namespace LibraryApi.Service
             if(_validationResult.IsValid)
             {
                 List<Book> bookList = _bookData.Add(book);
-                return _response.CreateObject(200, bookList);
+                return _response.CreateObject(201, bookList);
             }
             else
             { 
@@ -59,7 +59,7 @@ namespace LibraryApi.Service
             _validationResult = _validator.Validate(bookToEdit);
 
             if (_validationResult.IsValid)
-                return _response.CreateObject(200, bookToEdit);
+                return _response.CreateObject(201, bookToEdit);
             else
             {
                 List<Tuple<string, string>> errorList = new List<Tuple<string, string>>();
